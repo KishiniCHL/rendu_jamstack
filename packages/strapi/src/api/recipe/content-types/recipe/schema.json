@@ -36,6 +36,11 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "steps": {
+      "type": "component",
+      "repeatable": true,
+      "component": "recipes.etapes"
     }
   }
 }

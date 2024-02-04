@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_recipes_etapes",
+  "info": {
+    "displayName": "Etapes"
+  },
+  "options": {},
+  "attributes": {
+    "titre": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

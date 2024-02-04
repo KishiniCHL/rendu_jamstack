@@ -1,5 +1,7 @@
 <script lang="ts" setup>
 import type { RecipeData } from '~/models/recipes.model'
+import MainHeader from '~/components/MainHeader.vue' 
+import MainFooter from '~/components/MainFooter.vue'
 
 const { findOne } = useStrapi4()
 const route = useRoute()
@@ -11,41 +13,89 @@ const { data: recipe, pending } = useAsyncData(
 </script>
 
 <template>
+  <MainHeader />
   <div class="container">
     <template v-if="pending">
-      <p class="text-9xl text-center">
-        ÇA CHARGE
+      <p>
+        Chargement de la recette...
       </p>
     </template>
     <template v-else>
-      <NuxtImg
-        :src="recipe.data.image.url" alt="" aria-hidden="true"
-        class="h-[500px] object-contain object-center w-full bg-white"
-      />
-      <h1>{{ recipe.data.title }}</h1>
-      <div class="flex items-center gap-x-2">
-        <span v-for="tag in recipe.data.tags" :key="tag.id" class="py-1 px-2 bg-gray-200">
-          {{ tag.name }}
-        </span>
+      <div class="image-container">
+        <NuxtImg
+          :src="recipe.data.image.url" 
+          alt="" 
+          aria-hidden="true"
+          class="cover_image"
+        />
       </div>
-      <p>{{ recipe.data.description }}</p>
-      <div class="flex flex-col md:flex-row">
-        <div class="flex flex-col w-full md:w-1/4">
-          <h2 class="mb-0">
-            Ingrédients
-          </h2>
-          <ul class="list-none gap-2 p-0">
-            <li
-              v-for="ingredient in recipe.data.ingredients" :key="ingredient.id"
-            >
-              <p class="font-bold">
-                {{ ingredient.name }}
-              </p>
-              <p>{{ ingredient.quantity }}</p>
-            </li>
-          </ul>
+
+      <div class="s-recipe_container">
+        <a @click="$router.go(-1)" class="recipe_link">Retour</a>
+
+        <h1 class="mb-14">{{ recipe.data.title }}</h1>
+        <div>
+          <span v-for="tag in recipe.data.tags" :key="tag.id" class="style_tag">
+            {{ tag.name }}
+          </span>
         </div>
+        <div v-html="$md.render(recipe.data.description )" class="mt-4"></div>
+        <div>
+          <div>
+            <h2>
+              La recette
+            </h2>
+            <ul class="list-none">
+              <li v-for="step in recipe.data.steps" :key="step.id">
+                <p class="title_steps">
+                  {{ step.titre }}
+                </p>
+                <div v-html="$md.render(step.description)"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
       </div>
+
     </template>
   </div>
+  <MainFooter />
 </template>
+
+<style>
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 260px;
+}
+
+.image-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(215, 215, 215, 0.449);
+  z-index: 1;
+}
+
+.cover_image {
+  width: 100%;
+  height: 260px;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+}
+
+.s-recipe_container {
+  padding: 2rem 12rem;
+}
+
+.title_steps{
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 1rem;
+}
+</style>

@@ -17,9 +17,7 @@ defineProps({
       <h3>
         {{ recipe.title }}
       </h3>
-      <p>
-        {{ recipe.description }}
-      </p>
+
       <NuxtLink class="recipe_link" :to="`/recettes/${recipe.slug}`">
         Voir la recette
     </NuxtLink>

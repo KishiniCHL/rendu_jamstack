@@ -70,3 +70,27 @@ h2{
 	box-shadow: none;
 	transform: translateY(0);
   }
+
+
+  .style_tag{
+	background-color: #977f63;
+	padding: 12px;
+  }
+
+  .recipe_link{
+	border: #473122 1px solid;
+	padding: 12px 16px;
+	text-decoration: none;
+	color: #000;
+	margin-bottom: 24px;
+	transition: border-radius 0.3s ease; 
+  }
+  
+  .recipe_link:hover {
+	text-decoration: underline;
+	text-underline-offset: 5px;
+	text-decoration-thickness: 1px;
+	color: #473122; 
+	border-radius: 8px;
+  }
+  
