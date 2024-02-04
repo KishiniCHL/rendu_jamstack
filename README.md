@@ -1,5 +1,5 @@
-[[https://github.com/KishiniCHL/rendu_jamstack
-](https://rendu-jamstack-app-beta.vercel.app/)](https://rendu-jamstack-app-beta.vercel.app/)
+https://rendu-jamstack-app-beta.vercel.app/
+
 ---
 
 # Headless 2024
