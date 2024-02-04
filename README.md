@@ -1,3 +1,7 @@
+[https://github.com/KishiniCHL/rendu_jamstack
+](https://rendu-jamstack-app-beta.vercel.app/)
+---
+
 # Headless 2024
 
 Headless 2024 course starter for IIM Digital School.
