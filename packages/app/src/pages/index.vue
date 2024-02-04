@@ -1,28 +1,30 @@
 <script lang="ts" setup>
 import RecipeCard from '~/components/RecipeCard.vue'
 import type { ITag } from '~/models/recipes.model'
+import MainHeader from '~/components/MainHeader.vue' 
+import HeroContent from '~/components/HeroContent.vue' 
 
-const { find } = useStrapi4()
-const search = useSearchStore()
 
-const { data: tags } = useAsyncData(
-  'tags',
-  () => find<{ data: ITag[] }>('tags'),
-)
+// const { find } = useStrapi4()
+// const search = useSearchStore()
 
-function addTag(tag: string) {
-  if (!search.queryTags.includes(tag))
-    search.queryTags.push(tag)
-  else search.queryTags = search.queryTags.filter(t => t !== tag)
-}
+// const { data: tags } = useAsyncData(
+//   'tags',
+//   () => find<{ data: ITag[] }>('tags'),
+// )
+
+// function addTag(tag: string) {
+//   if (!search.queryTags.includes(tag))
+//     search.queryTags.push(tag)
+//   else search.queryTags = search.queryTags.filter(t => t !== tag)
+// }
 </script>
 
 <template>
   <div class="container">
-    <div v-if="!search.pending && search.sortedByTags" class="flex flex-col gap-y-4">
-      <h1 class="mb-0">
-        Recettes
-      </h1>
+    <MainHeader /> 
+    <HeroContent />
+    <!-- <div v-if="!search.pending && search.sortedByTags" class="flex flex-col gap-y-4">
       <div class="flex flex-col gap-4">
         <aside class="flex flex-col gap-4 lg:w-1/4">
           <h2>Filtres de recherche :</h2>
@@ -70,6 +72,6 @@ function addTag(tag: string) {
           </div>
         </client-only>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>

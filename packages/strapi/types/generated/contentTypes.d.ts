@@ -768,32 +768,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiJeuJeu extends Schema.CollectionType {
-  collectionName: 'jeux';
-  info: {
-    singularName: 'jeu';
-    pluralName: 'jeux';
-    displayName: 'jeux';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String & Attribute.Required;
-    slug: Attribute.UID<'api::jeu.jeu', 'title'> & Attribute.Required;
-    description: Attribute.RichText;
-    image: Attribute.Media;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::jeu.jeu', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::jeu.jeu', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
 export interface ApiRecipeRecipe extends Schema.CollectionType {
   collectionName: 'recipes';
   info: {
@@ -879,7 +853,6 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::jeu.jeu': ApiJeuJeu;
       'api::recipe.recipe': ApiRecipeRecipe;
       'api::tag.tag': ApiTagTag;
     }
