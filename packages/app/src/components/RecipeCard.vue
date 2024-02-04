@@ -10,16 +10,48 @@ defineProps({
 </script>
 
 <template>
-  <li class="flex flex-col gap-y-4 p-4 border-5 border-[#dba6f7] border-solid rounded-2xl">
-    <NuxtImg :src="recipe.image.url" alt="" class="h-[100px] object-cover" />
-    <h3 class="my-0">
-      {{ recipe.title }}
-    </h3>
-    <p class="my-0">
-      {{ recipe.description }}
-    </p>
-    <NuxtLink :to="`/recettes/${recipe.slug}`">
-      Voir la recette
-    </NuxtLink>
-  </li>
+    <div class="card_container">
+      <div class="card_img">
+        <NuxtImg :src="recipe.image.url" alt="" />
+      </div>
+      <h3>
+        {{ recipe.title }}
+      </h3>
+      <p>
+        {{ recipe.description }}
+      </p>
+      <NuxtLink :to="`/recettes/${recipe.slug}`">
+        Voir la recette
+      </NuxtLink>
+    </div>
 </template>
+
+<style>
+
+.card_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  margin: 1rem;
+  border: 1px solid #000;
+  border-radius: 16px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  height: 400px;
+}
+
+.card_img{
+  width: 100%;
+  height: 260px;
+}
+
+.card_img img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+</style>

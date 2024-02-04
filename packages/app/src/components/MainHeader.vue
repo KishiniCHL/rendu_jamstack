@@ -8,7 +8,7 @@
       <NuxtLink class="header_title" to="/">Accueil</NuxtLink>
       <NuxtLink class="header_title" to="/recipe-page">Les recettes</NuxtLink>
 
-      <a class="header_title" href="https://github.com/KishiniCHL" target="_blank" rel="noopener noreferrer">Mon GitHub</a>
+      <!-- <a class="header_title" href="https://github.com/KishiniCHL" target="_blank" rel="noopener noreferrer">Mon GitHub</a> -->
     </div>
   </nav>
 </template>
@@ -19,6 +19,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    height: 148px;
+    background-color: rgba(201, 167, 149, 0.266);
   }
 
   h1, .header_title {
