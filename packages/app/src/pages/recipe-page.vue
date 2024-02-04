@@ -2,15 +2,17 @@
 import RecipeCard from '~/components/RecipeCard.vue'
 import type { ITag } from '~/models/recipes.model'
 import MainHeader from '~/components/MainHeader.vue' 
-
-
+import MainFooter from '~/components/MainFooter.vue'
 
 const { find } = useStrapi4()
 const search = useSearchStore()
 
-const { data: tags } = useAsyncData(
+const { data: tags, pending: isLoading } = useAsyncData(
   'tags',
-  () => find<{ data: ITag[] }>('tags'),
+  async () => {
+    const result = await find<{ data: ITag[] }>('tags')
+    return result
+  },
 )
 
 function addTag(tag: string) {
@@ -55,18 +57,20 @@ function addTag(tag: string) {
         <client-only>
           <div>
             <h2 class="text_middle">Recettes</h2>
-            <div
-              v-if="search.sortedByTags.length"
-            >
-            <div class="card_wrapper">
-              <RecipeCard
-                v-for="recipe in search.sortedByTags"
-                :key="recipe.id"
-                :recipe="recipe"
-              />
-            </div>
-
-            </div>
+            <template v-if="isLoading">
+              <p>
+                Chargement des recettes, veuillez patienter un tout petit peu...
+              </p>
+            </template>
+            <template v-else-if="search.sortedByTags.length">
+              <div class="card_wrapper">
+                <RecipeCard
+                  v-for="recipe in search.sortedByTags"
+                  :key="recipe.id"
+                  :recipe="recipe"
+                />
+              </div>
+            </template>
             <p v-else>
               Aucun résultat pour cette recherche
             </p>
@@ -74,6 +78,7 @@ function addTag(tag: string) {
         </client-only>
       </div>
   </div>
+  <MainFooter />
 </template>
 
 <style>
