@@ -31,7 +31,7 @@ const { data: recipe, pending } = useAsyncData(
       </div>
 
       <div class="s-recipe_container">
-        <a @click="$router.go(-1)" class="recipe_link">Retour</a>
+        <button @click="$router.go(-1)" class="recipe_link">Retour</button>
 
         <h1 class="mb-14">{{ recipe.data.title }}</h1>
         <div>
