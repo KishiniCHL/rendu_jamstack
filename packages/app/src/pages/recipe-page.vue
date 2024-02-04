@@ -72,7 +72,7 @@ function addTag(tag: string) {
               </div>
             </template>
             <p v-else>
-              Aucun résultat pour cette recherche
+              Aucun résultat pour cette recherche. N'hésitez pas à appuyer sur F5 en cas de soucis d'affichage.
             </p>
           </div>
         </client-only>
